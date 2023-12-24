@@ -1,0 +1,22 @@
+<% layout('/layouts/boilerplate') %>
+
+    <h1>ALL WAREHOUSES</h1>
+    <div>
+        <a href="/warehouses/new" class="btn btn-primary mb-3">New Warehouse</a>
+    </div>
+    <div class="row">
+        <% for (let warehouse of warehouses) { %>
+            <div class="col-md-6 col-lg-4 mb-3">
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <%= warehouse.province %> Warehouse
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <a class="btn btn-primary" href="/warehouses/<%= warehouse._id %>">View</a>
+                    </div>
+                </div>
+            </div>
+            <% } %>
+    </div>

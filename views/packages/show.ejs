@@ -1,0 +1,22 @@
+<% layout('/layouts/boilerplate') %>
+
+    <div class="card mb-3">
+        <div class="card-body">
+            <h4 class="card-title">
+                Name: <%= package.name %>
+            </h4>
+        </div>
+        <div class="card-body">
+            <p class="card-text">Weight: <%= package.weight %> kg
+            </p>
+            <p class="card-text">Fee: $<%= package.fee %>
+            </p>
+            <p class="card-text">State: <%= package.state %>
+            </p>
+            <p class="card-text">Note: <%= package.note %>
+            </p>
+        </div>
+        <div class="card-body">
+            <a class="card-link btn btn-primary mb-3" href="/packages">All Packages</a>
+        </div>
+    </div>

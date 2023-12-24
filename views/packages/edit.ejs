@@ -1,0 +1,71 @@
+<% layout('/layouts/boilerplate') %>
+
+    <div class="row">
+        <h1 class="text-center">Edit Package</h1>
+        <div class="col-6 offset-3">
+            <form action="/packages/<%= package._id %>?_method=put" class="validated-form" method="post" novalidate>
+                <div class="mb-3">
+                    <label class="form-label" for="name">Name</label>
+                    <input class="form-control" type="text" id="name" name="package[name]" value="<%= package.name %>"
+                        required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="weight">Weight</label>
+                    <input class="form-control" type="text" id="weight" name="package[weight]"
+                        value="<%= package.weight %>" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="fee">Fee</label>
+                    <input class="form-control" type="text" id="fee" name="package[fee]" value="<%= package.fee %>"
+                        required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="state">State</label>
+                    <select class="form-select" aria-label="Select" id="state" name="package[state]">
+                        <option value="Arrived at sender's store" 
+                        <%if(package.state==="Arrived at sender's store" ){%>
+                            selected
+                            <% } %>>Arrived at sender's store
+                        </option>
+                        <option value="Delivering to sender's warehouse"
+                        <%if(package.state==="Delivering to sender's warehouse" ){%>
+                            selected
+                            <% } %>>Delivering to sender's warehouse
+                        </option>
+                        <option value="Arrived at sender's warehouse"
+                        <%if(package.state==="Arrived at sender's warehouse" ){%>
+                            selected
+                            <% } %>>Arrived at sender's warehouse
+                        </option>
+                        <option value="Delivering to receiver's warehouse"
+                        <%if(package.state==="Delivering to receiver's warehouse" ){%>
+                            selected
+                            <% } %>>Delivering to receiver's warehouse
+                        </option>
+                        <option value="Arrived at receiver's warehouse"
+                        <%if(package.state==="Arrived at receiver's warehouse" ){%>
+                            selected
+                            <% } %>>Arrived at receiver's warehouse
+                        </option>
+                        <option value="Delivered to receiver's store"
+                        <%if(package.state==="Delivered to receiver's store" ){%>
+                            selected
+                            <% } %>>Delivered to receiver's store
+                        </option>
+                        <option value="Completed" <% if(package.state==="Completed" ){%>
+                            selected
+                            <% } %>>Completed
+                        </option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="note">Note</label>
+                    <textarea class="form-control" name="package[note]" id="note" cols="30" rows="5"><%= package.note %></textarea>
+                </div>
+                <div class="mb-3">
+                    <button class="btn btn-success">Update</button>
+                </div>
+            </form>
+            <a class="btn btn-danger mb-3" href="/packages/<%= package._id %>">Cancel</a>
+        </div>
+    </div>
