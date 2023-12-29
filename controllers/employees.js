@@ -1,10 +1,11 @@
+const Employee = require('../models/employee');
 
 
 module.exports.renderRegisterForm = (req, res) => {
     res.render('employees/register')
 }
 
-module.exports.register = async (req, res, next) => {
+module.exports.registerAdmin = async (req, res, next) => {
     try {
         const { email, username, name, phoneNumber, password } = req.body;
         const employee = new Employee({ email, username, name, phoneNumber });

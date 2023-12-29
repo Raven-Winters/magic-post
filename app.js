@@ -3,6 +3,7 @@ const path = require('path');
 const mongoose = require('mongoose');
 const ejsMate = require('ejs-mate');
 const session = require('express-session');
+const MongoStore = require('connect-mongo');
 const flash = require('connect-flash');
 const ExpressError = require('./utils/ExpressError');
 const methodOverride = require('method-override');
@@ -16,7 +17,9 @@ const storesRoutes = require('./routes/stores');
 const employeesRoutes = require('./routes/employees');
 const contactsRoutes = require('./routes/contacts');
 
-mongoose.connect('mongodb://127.0.0.1:27017/magic-post')
+// const dbUrl = "mongodb://127.0.0.1:27017/magic-post"
+const dbUrl = "mongodb+srv://21020514:0R3cuevA4M4yQ9IL@cluster0.ufr558k.mongodb.net/magic-post"
+mongoose.connect(dbUrl)
     .then(() => {
         console.log('CONNECTED TO MAGICPOST DATABASE');
     })
@@ -35,8 +38,22 @@ app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 //session & flash
+const store = MongoStore.create({
+    mongoUrl: dbUrl,
+    touchAfter: 24 * 60 * 60,
+    crypto: {
+        secret: 'thisshouldbeabettersecret!'
+    }
+});
+
+store.on('error', function (e) {
+    console.log('SESSION STORE ERROR', e);
+})
+
 const sessionConfig = {
-    secret: 'secretkey',
+    store,
+    name: 'session',
+    secret: 'thisshouldbeabettersecret!',
     resave: false,
     saveUninitialized: true,
     cookie: {
@@ -47,6 +64,7 @@ const sessionConfig = {
 }
 app.use(session(sessionConfig));
 app.use(flash());
+
 
 //passport
 app.use(passport.initialize());

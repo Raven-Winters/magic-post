@@ -10,7 +10,7 @@ const employeesController = require('../controllers/employees');
 
 router.route('/register')
     .get(employeesController.renderRegisterForm)
-    .post(catchAsync(employeesController.register));
+    .post(catchAsync(employeesController.registerAdmin));
 
 router.route('/login')
     .get(employeesController.renderLoginForm)

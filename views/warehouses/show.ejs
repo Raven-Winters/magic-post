@@ -1,6 +1,6 @@
 <% layout('/layouts/boilerplate') %>
 
-<div class="card mb-3">
+<div class="card shadow mb-5">
     <div class="card-body">
         <h4 class="card-title mb-3">
             <%= warehouse.province %> Warehouse
@@ -32,49 +32,51 @@
         <button class="btn btn-primary mb-3" type="button" data-bs-toggle="collapse"
             data-bs-target="#multiCollapseExample1" aria-expanded="false"
             aria-controls="multiCollapseExample1">Packages</button>
-        <div class="collapse multi-collapse" id="multiCollapseExample1">
-            <% if(currentUser && warehouse.manager.equals(currentUser._id)) { %>
-            <h4>Add Package</h4>
-            <form action="/warehouses/<%= warehouse._id %>/packages" method="POST" class="mb-3 validated-form"
-                novalidate>
-                <div class="mb-3">
-                    <label class="form-label" for="name">Name</label>
-                    <input class="form-control" type="text" name="package[name]" id="name">
-                </div>
-                <div class="mb-3">
-                    <label class="form-label" for="weight">Weight</label>
-                    <input class="form-control" type="number" min="0" name="package[weight]" id="weight">
-                </div>
-                <div class="mb-3">
-                    <label class="form-label" for="fee">Fee</label>
-                    <input class="form-control" type="number" min="0" name="package[fee]" id="fee">
-                </div>
-                <div class="mb-3">
-                    <label class="form-label" for="state">State</label>
-                    <select class="form-select" aria-label="Select" id="state" name="package[state]">
-                        <option value="Arrived at sender's store" selected>Arrived at sender's store</option>
-                        <option value="Delivering to sender's warehouse">Delivering to sender's warehouse</option>
-                        <option value="Arrived at sender's warehouse">Arrived at sender's warehouse</option>
-                        <option value="Delivering to receiver's warehouse">Delivering to receiver's warehouse
-                        </option>
-                        <option value="Arrived at receiver's warehouse">Arrived at receiver's warehouse</option>
-                        <option value="Delivered to receiver's store">Delivered to receiver's store</option>
-                        <option value="Completed">Completed</option>
-                    </select>
-                </div>
-                <!-- <div class="mb-3">
-                    <label class="form-label" for="senderWarehouse">Sender warehouse</label>
-                    <input class="form-control" type="text" name="package[senderWarehouse.name]" id="senderWarehouse">
-                </div> -->
-                <div class="mb-3">
-                    <label class="form-label" for="note">Note</label>
-                    <textarea class="form-control" name="package[note]" id="note" cols="30" rows="5"></textarea>
-                </div>
-                <button class="btn btn-success">Submit</button>
-            </form>
-            <% } %>
+        <div class="collapse multi-collapse mb-3" id="multiCollapseExample1">
+            
+                <% if(currentUser && warehouse.manager.equals(currentUser._id)) { %>
+                <h4 class="mb-3">Add Package</h4>
+                <form action="/warehouses/<%= warehouse._id %>/packages" method="POST" class="mb-3 validated-form"
+                    novalidate>
+                    <div class="mb-3">
+                        <label class="form-label" for="name">Name</label>
+                        <input class="form-control" type="text" name="package[name]" id="name">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="weight">Weight</label>
+                        <input class="form-control" type="number" min="0" name="package[weight]" id="weight">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="fee">Fee</label>
+                        <input class="form-control" type="number" min="0" name="package[fee]" id="fee">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="state">State</label>
+                        <select class="form-select" aria-label="Select" id="state" name="package[state]">
+                            <option value="Arrived at sender's store" selected>Arrived at sender's store</option>
+                            <option value="Delivering to sender's warehouse">Delivering to sender's warehouse</option>
+                            <option value="Arrived at sender's warehouse">Arrived at sender's warehouse</option>
+                            <option value="Delivering to receiver's warehouse">Delivering to receiver's warehouse
+                            </option>
+                            <option value="Arrived at receiver's warehouse">Arrived at receiver's warehouse</option>
+                            <option value="Delivered to receiver's store">Delivered to receiver's store</option>
+                            <option value="Completed">Completed</option>
+                        </select>
+                    </div>
+                    <!-- <div class="mb-3">
+                        <label class="form-label" for="senderWarehouse">Sender warehouse</label>
+                        <input class="form-control" type="text" name="package[senderWarehouse.name]" id="senderWarehouse">
+                    </div> -->
+                    <div class="mb-3">
+                        <label class="form-label" for="note">Note</label>
+                        <textarea class="form-control" name="package[note]" id="note" cols="30" rows="5"></textarea>
+                    </div>
+                    <button class="btn btn-success">Submit</button>
+                </form>
+                <% } %>
+                
             <% if(warehouse.packages.length) { %>
-                <h4>Packages</h4>
+                <h4 class="mb-3">Packages</h4>
                 <% for(let package of warehouse.packages) { %>
                     <div class="card mb-3">
                         <div class="card-body">
@@ -90,12 +92,13 @@
                             </p>
                             <% if(currentUser && warehouse.manager.equals(currentUser._id)) { %>
                             <a class="card-link btn btn-primary mb-3" href="/packages/<%= package._id %>/edit">Edit</a>
-                            <% } %>
+                            
                             <form class="d-inline"
                                 action="/warehouses/<%=warehouse._id%>/packages/<%=package._id%>?_method=DELETE"
                                 method="POST">
                                 <button class="btn btn-danger mb-3">Delete</button>
                             </form>
+                            <% } %>
                         </div>
                     </div>
                 <% } %>
@@ -107,46 +110,47 @@
         <button class="btn btn-primary mb-3" type="button" data-bs-toggle="collapse"
             data-bs-target="#multiCollapseExample2" aria-expanded="false"
             aria-controls="multiCollapseExample2">Stores</button>
-        <div class="collapse multi-collapse" id="multiCollapseExample2">
-            <% if(currentUser && warehouse.manager.equals(currentUser._id)) { %>
-            <h4>Add Store</h4>
-            <form action="/warehouses/<%= warehouse._id %>/stores" method="POST" class="mb-3 validated-form"
-                novalidate>
-                <div class="mb-3">
-                    <label class="form-label" for="district">District</label>
-                    <input class="form-control" type="text" name="store[district]" id="district">
-                </div>
-                <div class="mb-3">
-                    <label class="form-label" for="address">Address</label>
-                    <input class="form-control" type="text" name="store[address]" id="address">
-                </div>
-                <button class="btn btn-success">Submit</button>
-            </form>
-            <% } %>
-            <% if(warehouse.stores.length) { %>
-                <h4>Stores</h4>
-                <% for(let store of warehouse.stores) { %>
-                    <div class="card mb-3 ">
-                        <div class="card-body">
-                            <h4 class="card-title mb-3">
-                                <%= store.district %> Store
-                            </h4>
-                            <p class="card-subtitle">
-                                Address: <%= store.address %>
-                            </p>
-                        </div>
-                        <div class="card-body">
-                            <% if(currentUser && warehouse.manager.equals(currentUser._id)) { %>
-                            <a class="card-link btn btn-primary mb-3" href="/stores/<%= store._id %>/edit">Edit</a>
-                            <% } %>
-                            <form class="d-inline " action="/warehouses/<%=warehouse._id%>/stores/<%=store._id%>?_method=DELETE"
-                                method="POST">
-                                <button class="btn btn-danger mb-3">Delete</button>
-                            </form>
-                        </div>
+        <div class="collapse multi-collapse mb-3" id="multiCollapseExample2">
+                <% if(currentUser && warehouse.manager.equals(currentUser._id)) { %>
+                <h4 class="mb-3">Add Store</h4>
+                <form action="/warehouses/<%= warehouse._id %>/stores" method="POST" class="mb-3 validated-form"
+                    novalidate>
+                    <div class="mb-3">
+                        <label class="form-label" for="district">District</label>
+                        <input class="form-control" type="text" name="store[district]" id="district">
                     </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="address">Address</label>
+                        <input class="form-control" type="text" name="store[address]" id="address">
+                    </div>
+                    <button class="btn btn-success">Submit</button>
+                </form>
                 <% } %>
-            <% } %>
+                <% if(warehouse.stores.length) { %>
+                    <h4 class="mb-3">Stores</h4>
+                    <% for(let store of warehouse.stores) { %>
+                        <div class="card mb-3 ">
+                            <div class="card-body">
+                                <h4 class="card-title mb-3">
+                                    <%= store.district %> Store
+                                </h4>
+                                <p class="card-subtitle">
+                                    Address: <%= store.address %>
+                                </p>
+                            </div>
+                            <div class="card-body">
+                                <% if(currentUser && warehouse.manager.equals(currentUser._id)) { %>
+                                <a class="card-link btn btn-primary mb-3" href="/stores/<%= store._id %>/edit">Edit</a>
+                                
+                                <form class="d-inline " action="/warehouses/<%=warehouse._id%>/stores/<%=store._id%>?_method=DELETE"
+                                    method="POST">
+                                    <button class="btn btn-danger mb-3">Delete</button>
+                                </form>
+                                <% } %>
+                            </div>
+                        </div>
+                    <% } %>
+                <% } %>
         </div>
     </div>
 </div>
