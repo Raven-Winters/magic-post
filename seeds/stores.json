@@ -1,0 +1,24 @@
+[
+    {
+        "_id": {
+            "$oid": "658ecb1931c256e6c582e03c"
+        },
+        "district": "Cau Giay",
+        "address": "144 Xuan Thuy",
+        "manager": {
+            "$oid": "658ecae231c256e6c582e024"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "658ecb3431c256e6c582e059"
+        },
+        "district": "Quan 1",
+        "address": "Quan 1",
+        "manager": {
+            "$oid": "658ecae231c256e6c582e024"
+        },
+        "__v": 0
+    }
+]

@@ -6,7 +6,7 @@ const Package = require('./models/package');
 const Store = require('./models/store');
 
 
-
+// check if logged in as admin
 module.exports.isLoggedIn = (req, res, next) => {
     if (!req.isAuthenticated()) {
         req.session.returnTo = req.originalUrl;
@@ -16,14 +16,13 @@ module.exports.isLoggedIn = (req, res, next) => {
     next();
 }
 
+//save path
 module.exports.storeReturnTo = (req, res, next) => {
     if (req.session.returnTo) {
         res.locals.returnTo = req.session.returnTo;
     }
     next();
 }
-
-
 
 //authorize
 module.exports.isWarehouseManager = async (req, res, next) => {
@@ -36,6 +35,7 @@ module.exports.isWarehouseManager = async (req, res, next) => {
     next();
 }
 
+//check if user is manager
 module.exports.isPackageManager = async (req, res, next) => {
     const { id } = req.params;
     const package = await Package.findById(id);

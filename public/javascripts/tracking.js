@@ -5,6 +5,8 @@
 //     res.redirect(`/packages/${value}`);
 // })
 
+
+//track packages for customers
 const tracker = document.getElementById('tracker')
 
 tracker.addEventListener('submit', function (event) {

@@ -2,19 +2,20 @@ if (process.env.NODE_ENV !== 'production') {
     require('dotenv').config();
 }
 
-const express = require('express');
+const express = require('express'); //express
 const path = require('path');
-const mongoose = require('mongoose');
+const mongoose = require('mongoose'); //database
 const ejsMate = require('ejs-mate');
-const session = require('express-session');
+const session = require('express-session'); //session
 const MongoStore = require('connect-mongo');
-const flash = require('connect-flash');
-const ExpressError = require('./utils/ExpressError');
-const methodOverride = require('method-override');
-const passport = require('passport');
+const flash = require('connect-flash'); //flash
+const ExpressError = require('./utils/ExpressError'); //catch error
+const methodOverride = require('method-override'); //method overrride
+const passport = require('passport'); // passport
 const localStrategy = require('passport-local');
 const Employee = require('./models/employee');
 
+//routes
 const warehousesRoutes = require('./routes/warehouses');
 const packagesRoutes = require('./routes/packages');
 const storesRoutes = require('./routes/stores');
@@ -22,6 +23,7 @@ const employeesRoutes = require('./routes/employees');
 const contactsRoutes = require('./routes/contacts');
 // const trackingRoutes = require('./routes/tracking');
 
+//connect to cloud DB
 // const dbUrl = "mongodb://127.0.0.1:27017/magic-post"
 const dbUrl = "mongodb+srv://21020514:0R3cuevA4M4yQ9IL@cluster0.ufr558k.mongodb.net/magic-post"
 mongoose.connect(dbUrl)
@@ -32,6 +34,7 @@ mongoose.connect(dbUrl)
         console.log(err);
     })
 
+//start express
 const app = express();
 
 app.engine('ejs', ejsMate);
@@ -84,7 +87,6 @@ app.use((req, res, next) => {
     next();
 })
 
-//routers
 app.use('/warehouses', warehousesRoutes);
 app.use('/stores', storesRoutes);
 app.use('/packages', packagesRoutes);
@@ -94,7 +96,18 @@ app.use('/warehouses/:id/packages', packagesRoutes);
 app.use('/warehouses/:id/stores', storesRoutes);
 app.use('/', employeesRoutes);
 
+// const loadAPI = async () => {
+//     try {
+//         const res = await fetch(`./seeds/warehouses.json`);
+//         const data = await res.json();
+//         console.log(data);
+//     }
+//     catch {
+//         console.log("ERROR");
+//     }
+// }
 
+//homepage
 app.get('/', (req, res) => {
     res.render('home')
 });
@@ -110,6 +123,7 @@ app.use((err, req, res, next) => {
     res.status(statusCode).render('error', { err });
 })
 
+//listen
 app.listen(3000, () => {
     console.log('LISTENING ON PORT 3000');
 })

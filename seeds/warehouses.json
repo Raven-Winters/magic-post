@@ -1,0 +1,70 @@
+[
+    {
+        "_id": {
+            "$oid": "658ecb0031c256e6c582e02b"
+        },
+        "province": "Ha Noi",
+        "packages": [
+            {
+                "$oid": "658ecb0c31c256e6c582e032"
+            }
+        ],
+        "stores": [
+            {
+                "$oid": "658ecb1931c256e6c582e03c"
+            }
+        ],
+        "manager": {
+            "$oid": "658ecae231c256e6c582e024"
+        },
+        "__v": 2
+    },
+    {
+        "_id": {
+            "$oid": "658ecb0031c256e6c582e02b"
+        },
+        "province": "Ha Noi",
+        "packages": [
+            {
+                "$oid": "658ecb0c31c256e6c582e032"
+            }
+        ],
+        "stores": [
+            {
+                "$oid": "658ecb1931c256e6c582e03c"
+            }
+        ],
+        "manager": {
+            "$oid": "658ecae231c256e6c582e024"
+        },
+        "__v": 2
+    },
+    {
+        "_id": {
+            "$oid": "658ecb3b31c256e6c582e065"
+        },
+        "province": "Hai Phong",
+        "packages": [
+            {
+                "$oid": "658ecb5531c256e6c582e06c"
+            }
+        ],
+        "stores": [],
+        "manager": {
+            "$oid": "658ecae231c256e6c582e024"
+        },
+        "__v": 1
+    },
+    {
+        "_id": {
+            "$oid": "658ede4fd1f7e2b7cd3a5b05"
+        },
+        "province": "Thai Nguyen",
+        "packages": [],
+        "stores": [],
+        "manager": {
+            "$oid": "658ecae231c256e6c582e024"
+        },
+        "__v": 0
+    }
+]

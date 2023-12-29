@@ -1,0 +1,30 @@
+[
+    {
+        "_id": {
+            "$oid": "658ecb0c31c256e6c582e032"
+        },
+        "name": "Eggs",
+        "weight": 10,
+        "fee": 15,
+        "note": "Fragile",
+        "state": "Arrived at sender's store",
+        "manager": {
+            "$oid": "658ecae231c256e6c582e024"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "658ecb5531c256e6c582e06c"
+        },
+        "name": "Books",
+        "weight": 20,
+        "fee": 12,
+        "note": "100 books",
+        "state": "Delivering to receiver's warehouse",
+        "manager": {
+            "$oid": "658ecae231c256e6c582e024"
+        },
+        "__v": 0
+    }
+]
