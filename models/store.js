@@ -9,6 +9,17 @@ const storeSchema = new Schema({
         unique: [true, "Store already exists"]
     },
 
+    address: {
+        type: String,
+        required: [true, "Please enter Store's address"],
+        unique: [true, "Store already exists"]
+    },
+
+    manager: {
+        type: Schema.Types.ObjectId,
+        ref: 'Employee'
+    }
+
 })
 
 

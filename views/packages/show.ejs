@@ -2,21 +2,24 @@
 
     <div class="card mb-3">
         <div class="card-body">
-            <h4 class="card-title">
-                Name: <%= package.name %>
+            <h4 class="card-title mb-3">
+                <%= package.name %>
             </h4>
-        </div>
-        <div class="card-body">
             <p class="card-text">Weight: <%= package.weight %> kg
             </p>
             <p class="card-text">Fee: $<%= package.fee %>
             </p>
             <p class="card-text">State: <%= package.state %>
             </p>
+            <p class="card-text">Manager: <%= package.manager.name %>
+            </p>
             <p class="card-text">Note: <%= package.note %>
             </p>
         </div>
         <div class="card-body">
-            <a class="card-link btn btn-primary mb-3" href="/packages">All Packages</a>
+            <% if(currentUser && package.manager.equals(currentUser._id)) { %>
+            <a class="card-link btn btn-primary" href="/packages/<%= package._id %>/edit">Edit</a>
+            <% } %>
+            <a class="d-inline btn btn-primary mb-3" href="/packages">All Packages</a>
         </div>
     </div>

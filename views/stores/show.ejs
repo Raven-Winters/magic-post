@@ -2,11 +2,15 @@
 
     <div class="card mb-3">
         <div class="card-body">
-            <h4 class="card-title">
+            <h4 class="card-title mb-3">
                 <%= store.district %> Store
             </h4>
-        </div>
-        <div class="card-body">
-            <a class="card-link btn btn-primary mb-3" href="/stores">All Stores</a>
+            <p class="card-subtitle mb-3">
+                Address: <%= store.address %>
+            </p>
+            <% if(currentUser && store.manager.equals(currentUser._id)) { %>
+            <a class="card-link btn btn-primary" href="/stores/<%= store._id %>/edit">Edit</a>
+            <% } %>
+            <a class="d-inline btn btn-primary mb-3" href="/stores">All Stores</a>
         </div>
     </div>

@@ -14,6 +14,7 @@ const warehousesRoutes = require('./routes/warehouses');
 const packagesRoutes = require('./routes/packages');
 const storesRoutes = require('./routes/stores');
 const employeesRoutes = require('./routes/employees');
+const contactsRoutes = require('./routes/contacts');
 
 mongoose.connect('mongodb://127.0.0.1:27017/magic-post')
     .then(() => {
@@ -64,6 +65,7 @@ app.use((req, res, next) => {
 app.use('/warehouses', warehousesRoutes);
 app.use('/stores', storesRoutes);
 app.use('/packages', packagesRoutes);
+app.use('/contacts', contactsRoutes);
 app.use('/warehouses/:id/packages', packagesRoutes);
 app.use('/warehouses/:id/stores', storesRoutes);
 app.use('/', employeesRoutes);

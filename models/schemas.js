@@ -22,5 +22,6 @@ module.exports.packageSchema = Joi.object({
 module.exports.storeSchema = Joi.object({
     store: Joi.object({
         district: Joi.string().required(),
+        address: Joi.string().required()
     }).required()
 })

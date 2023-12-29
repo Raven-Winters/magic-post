@@ -6,11 +6,12 @@
             <div class="col-md-6 col-lg-4 mb-3">
                 <div class="card mb-3">
                     <div class="card-body">
-                        <h5 class="card-title">
+                        <h5 class="card-title mb-3">
                             <%= store.district %> Store
                         </h5>
-                    </div>
-                    <div class="card-body">
+                        <p class="card-subtitle mb-3">
+                            Address: <%= store.address %>
+                        </p>
                         <a class="btn btn-primary" href="/stores/<%= store._id %>">View</a>
                     </div>
                 </div>

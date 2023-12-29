@@ -7,17 +7,13 @@
                 <div class="col-md-6 col-lg-4 mb-3">
                     <div class="card mb-3 h-100">
                         <div class="card-body">
-                            <h5 class="card-title">Name: <%= package.name %>
+                            <h5 class="card-title mb-3"><%= package.name %>
                             </h5>
-                        </div>
-                        <div class="card-body">
                             <p class="card-text">Weight: <%= package.weight %> kg
                             </p>
                             <p class="card-text">Fee: $<%= package.fee %>
                             </p>
                             <p class="card-text">State: <%= package.state %>
-                            </p>
-                            <p class="card-text">Note: <%= package.note %>
                             </p>
                             <a class="btn btn-primary" href="/packages/<%= package._id %>">View</a>
                         </div>

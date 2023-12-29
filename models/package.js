@@ -39,7 +39,7 @@ const packageSchema = new Schema({
 
     manager: {
         type: Schema.Types.ObjectId,
-        ref: 'Manager'
+        ref: 'Employee'
     }
 
     // senderWarehouse: {
