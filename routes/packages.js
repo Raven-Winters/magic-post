@@ -14,7 +14,7 @@ router.route('/')
 
 //show package
 router.route('/:id')
-    .get(isLoggedIn, catchAsync(packagesController.showPackage))
+    .get(catchAsync(packagesController.showPackage))
     .put(isLoggedIn, isPackageManager, validatePackage, catchAsync(packagesController.updatePackage));
 
 //edit package

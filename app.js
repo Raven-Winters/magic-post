@@ -20,6 +20,7 @@ const packagesRoutes = require('./routes/packages');
 const storesRoutes = require('./routes/stores');
 const employeesRoutes = require('./routes/employees');
 const contactsRoutes = require('./routes/contacts');
+// const trackingRoutes = require('./routes/tracking');
 
 // const dbUrl = "mongodb://127.0.0.1:27017/magic-post"
 const dbUrl = "mongodb+srv://21020514:0R3cuevA4M4yQ9IL@cluster0.ufr558k.mongodb.net/magic-post"
@@ -88,6 +89,7 @@ app.use('/warehouses', warehousesRoutes);
 app.use('/stores', storesRoutes);
 app.use('/packages', packagesRoutes);
 app.use('/contacts', contactsRoutes);
+// app.use('/tracking', trackingRoutes);
 app.use('/warehouses/:id/packages', packagesRoutes);
 app.use('/warehouses/:id/stores', storesRoutes);
 app.use('/', employeesRoutes);
